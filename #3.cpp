@@ -1,21 +1,37 @@
 #include <iostream>
+#include <algorithm>
+#include <vector>
 #include <cassert>
 
 using namespace std;
 
-using namespace std;
 
-float travelTime(float distance, float speed) {
-    assert(speed > 0);
-    return distance / speed;
+void printVector(const vector<int> &vec, string sep = " ") {
+    cout << "Elements in the database: ";
+    for (auto elem : vec) {
+        cout << elem << sep;
+    }
+    cout << endl;
 }
 
 int main() {
-    float distance, speed;
-    cout << "Please, enter distance (in meters): ";
-    cin >> distance;
-    cout << "Please, enter speed (in m/s): ";
-    cin >> speed;
-    cout << "Your average travel time is " << travelTime(distance, speed) << " sec.";
+    vector<int> db;
+    int input;
+    while (true) {
+        cout << "COMMANDS: '-1' to print the database, '0' to quit " << "\n";
+        cout << "Declare a number for the storage: ";
+        cin >> input;
+        if (input == -1) printVector(db);
+        else if (input == 0) {
+            cout << "Quitting the program" << "\n";
+            printVector(db);
+            break;
+        } else db.push_back(input);
+        if(db.size() == 20) {
+            cout << "Storage is full, quitting the program" << "\n";
+            printVector(db);
+            break;
+        }
+    }
     return 0;
 }
