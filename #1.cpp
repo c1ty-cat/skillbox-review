@@ -22,7 +22,7 @@ vector<int> getVector(int size) {
     while (counter < size) {
         cout << "Please, give a number #" << counter + 1 << " ";
         cin >> num;
-        assert(num > '0' && num < '9');
+        assert(num > 0 && num < 9);
         numbers.push_back(num);
         counter++;
     }
