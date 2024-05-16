@@ -14,9 +14,22 @@ void printVector(const vector<int> &vec, string sep = " ") {
     cout << endl;
 }
 
+vector<int> pushElement(vector<int> &vec, int headIdx, int tailIdx, int el) {
+    if(tailIdx < vec.size()) {
+        vec[tailIdx] = el;
+    } else {
+        vec.erase(vec.begin());
+        vec.push_back(el);
+    }
+    return vec;
+}
+
 int main() {
-    vector<int> db;
+    int vecSize = 20;
+    vector<int> db(vecSize);
     int input;
+    int headIdx = 0;
+    int tailIdx = 0;
     while (true) {
         cout << "COMMANDS: '-1' to print the database, '0' to quit " << "\n";
         cout << "Declare a number for the storage: ";
@@ -26,12 +39,11 @@ int main() {
             cout << "Quitting the program" << "\n";
             printVector(db);
             break;
-        } else db.push_back(input);
-        if(db.size() == 20) {
-            cout << "Storage is full, quitting the program" << "\n";
-            printVector(db);
-            break;
+        } else {
+            db = pushElement(db, headIdx, tailIdx, input);
+            tailIdx == vecSize ? : tailIdx++;
         }
+
     }
     return 0;
 }
