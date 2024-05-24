@@ -1,58 +1,50 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
+struct element {
+    bool isNegative;
+    int value;
+};
 
-void fillArr(int array[4][4]) {
-    cout << "Please, enter the matrix elements:" << "\n";
-    for (int row = 0; row < 4; row++) {
-        for (int col = 0; col < 4; col++) {
-            int el = 0;
-            cin >> el;
-            array[row][col] = el;
+void printVector(vector<element> &vec) {
+    for (int i = 0; i < vec.size(); i++) {
+        if (vec[i].isNegative == true) {
+            cout << "-" << vec[i].value << " ";
+        } else {
+            cout << vec[i].value << " ";
         }
     }
 }
 
-void fillVector(int array[4]) {
-    cout << "Please, enter the vector elements:" << "\n";
-    for (int col = 0; col < 4; col++) {
-        int el = 0;
-        cin >> el;
-        array[col] = el;
-    }
-
-}
-
-void calculateResult(int resultArr[4], int matrix[4][4], int vector[4]) {
-    for (int row = 0; row < 4; row++) {
-        int rowAccumulator = 0;
-        for (int col = 0; col < 4; col++) {
-            rowAccumulator += matrix[row][col] * vector[row];
+void bubbleSort(vector<element> &vec) {
+    for (int i = 0; i < vec.size()-1; i++) {
+        for (int j = 0; j < vec.size()-1; j++) {
+            if (vec[j].value > vec[j + 1].value) {
+                swap(vec[j], vec[j + 1]);
+            }
         }
-        resultArr[row] = rowAccumulator;
     }
 }
 
-void printResult(int array[4]) {
-    cout << "Your result vector is:" << "\n";
-    for (int col = 0; col < 4; col++) {
-        cout << "|" << array[col] << "|" << "\n";
+void getStructArray(vector<int> &initialVec, vector<element> &resultVec) {
+    for(int i = 0; i < initialVec.size(); i++) {
+        if(initialVec[i] < 0) {
+            resultVec[i].isNegative = true;
+        } else {
+            resultVec[i].isNegative = false;
+        }
+        resultVec[i].value = abs(initialVec[i]);
     }
 }
 
 
 int main() {
-    int matrixTemplate[4][4] = {{1, 2, 3, 4},
-                                {0, 0, 0, 0},
-                                {4, 4, 4, 4},
-                                {0, 0, 0, 0}};
-    int vectorTemplate[4] = {1, 0, 2, 0};
-    int resultTemplate[4] = {0, 0, 0, 0};
-
-    fillArr(matrixTemplate);
-    fillVector(vectorTemplate);
-    calculateResult(resultTemplate, matrixTemplate, vectorTemplate);
-    printResult(resultTemplate);
+    vector<int> initialVec = {-100, -50, -5, 1, 10, 15};
+    vector<element> resultVec(initialVec.size());
+    getStructArray(initialVec, resultVec);
+    bubbleSort(resultVec);
+    printVector(resultVec);
     return 0;
 }
