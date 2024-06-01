@@ -1,26 +1,32 @@
 #include <iostream>
-#include <bits/stdc++.h>
-#include <cassert>
 
 using namespace std;
 
-double concatenate(string leftValue, string rightValue) {
-    return stod(leftValue + "." + rightValue);
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-bool is_digits(string &str) {
-    return all_of(str.begin(), str.end(), ::isdigit);
+void swapArr(int *head, int *tail) {
+    while (head < tail) {
+        swap(head, tail);
+        head++;
+        tail--;
+    }
+}
+
+void print(int *el, int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << *(el + i) << " ";
+    }
+    cout << "\n";
 }
 
 int main() {
-    string leftVal = "";
-    string rightVal = "";
-    cout << "Please, give the left part of the number: ";
-    cin >> leftVal;
-    assert(is_digits(leftVal));
-    cout << "Please, give the right part of the number: ";
-    cin >> rightVal;
-    assert(is_digits(rightVal));
-    cout << "Your new double value is: " << concatenate(leftVal, rightVal);
-    return 0;
+    int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    print(arr, len);
+    swapArr(arr, arr + len-1);
+    print(arr, len);
 }
