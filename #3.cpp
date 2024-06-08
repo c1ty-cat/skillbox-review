@@ -1,35 +1,23 @@
 #include <iostream>
-#include "cstring"
 
-using namespace std;
-
-void printResult(bool result) {
-    cout << (result ? "true" : "false") << "\n";
-}
-
-bool isSubstr(const char *stringHead, const char *substringHead) {
-    int i = 0;
-    bool result = false;
-    while (*(stringHead + i) != '\0') {
-        if (*(stringHead + i) == *substringHead) {
-            result = true;
-            for (int k = 0; k < strlen(substringHead) - 1; ++k) {
-                if (*(stringHead + i + k) != *(substringHead + k)) {
-                    result = false;
-                    break;
-                }
-            }
-        }
-        ++i;
+void evenDigits(long long int num, int& ans) {
+    std::string numStr = std::to_string(num);
+    if (numStr.length() == 0) return;
+    else {
+        int currDigit = numStr[numStr.length() - 1] - '0';
+        if (currDigit % 2 == 0) ++ans;
+        numStr.pop_back();
+        if (numStr.length() == 0) return;
+        char* endPtr = NULL;
+        const char* begPtr = numStr.c_str();
+        evenDigits(std::strtoll(begPtr, &endPtr, 10), ans);
     }
-    return result;
 }
 
 int main() {
-    bool result = false;
-    const char *a = "Hello world";
-    const char *b = "wor";
-    const char *c = "banana";
-    printResult(isSubstr(a, b));
-    printResult(isSubstr(a, c));
+    long long num = 9223372036854775806;
+    int ans = 0;
+    evenDigits(num, ans);
+    std::cout << ans;
+    return 0;
 }

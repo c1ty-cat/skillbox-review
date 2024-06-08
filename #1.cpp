@@ -1,15 +1,28 @@
 #include <iostream>
+#include <vector>
 
-void swap(int* a, int* b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void swapvec(std::vector<int> &a, int(&b)[4]) {
+    for (int i = 0; i < a.size(); i++) {
+        swap(a[i], b[i]);
+    }
 }
 
 int main() {
-    int a = 10;
-    int b = 20;
-    std::cout << a << " " << b << "\n";
-    swap(&a, &b);
-    std::cout << a << " " << b;
+    std::vector<int> a = {1, 2, 3, 4};
+    int b[] = {2, 4, 6, 8};
+    swapvec(a, b);
+
+    for (int i = 0; i < 4; ++i)
+        std::cout << a[i];
+
+    std::cout << std::endl;
+
+    for (int i = 0; i < 4; ++i)
+        std::cout << b[i];
 }

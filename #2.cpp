@@ -1,32 +1,23 @@
 #include <iostream>
 
-using namespace std;
 
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-void swapArr(int *head, int *tail) {
-    while (head < tail) {
-        swap(head, tail);
-        head++;
-        tail--;
+int calcJumpOptions(int n, int i = 3, int k = 3) {
+    if (n == 0) {
+        return 1;
+    } else {
+        if (n < 0 || i < 1) {
+            return 0;
+        } else {
+            return calcJumpOptions(n - i, k, k) + calcJumpOptions(n, i - 1, k);
+        }
     }
-}
-
-void print(int *el, int size) {
-    for (int i = 0; i < size; ++i) {
-        cout << *(el + i) << " ";
-    }
-    cout << "\n";
 }
 
 int main() {
-    int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int len = sizeof(arr) / sizeof(arr[0]);
-    print(arr, len);
-    swapArr(arr, arr + len-1);
-    print(arr, len);
+    int n = 7;
+    int k = 2;
+    /*std::cin >> n;
+    std::cin >> k;*/
+    std::cout << calcJumpOptions(n, k, k);
 }
+
