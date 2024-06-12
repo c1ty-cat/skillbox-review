@@ -1,0 +1,3 @@
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#3/cmake-build-debug/CMakeFiles/_3.dir
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

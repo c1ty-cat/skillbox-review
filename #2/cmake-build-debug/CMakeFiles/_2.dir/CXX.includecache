@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#2/main.cpp
+iostream
+-
+fstream
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#2/fstream
+vector
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#2/vector
+cassert
+C:/YandexDisk/Important/C_plus_plus/skillbox-projects/topic 19/#2/cassert
+
